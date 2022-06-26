@@ -1,0 +1,111 @@
+/* Applies Browser prefixes to any property */
+@mixin prefixes($property, $value){
+  #{$property}: $value;
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+}
+
+@mixin prefix-property($property, $value){
+  #{$property}: -webkit-#{$value};
+  #{$property}: $value;
+}
+
+/* Centers an element horizontally and/or vertically */
+@mixin center($direction:null, $position:relative){
+  position:$position;
+  @if $direction == y {
+    top:50%;
+    @include prefixes(transform, translateY(-50%));
+  } @else if $direction == x {
+    left:50%;
+    @include prefixes(transform, translateX(-50%));
+    transform:translateX(-50%);
+  } @else {
+    left:50%; top:50%;
+    @include prefixes(transform, translate(-50%, -50%));
+  }
+}
+
+/* Adds a perfect fullpage background image */
+@mixin fullpage-background($imgPath: null, $attachment: fixed){
+  @if($imgPath == null) {
+    backbround-repeat:no-repeat;
+    background-position:center center;
+    background-attachment:#{$attachment};
+  } @else {
+    background: url(#{$imgPath}) no-repeat center center #{$attachment};
+  }
+  @include prefixes(background-size, cover);
+}
+
+/* Converts a color to rgba and adds opacity */
+@mixin background-opacity($color, $opacity: 0.3) {
+  background: $color; /* The Fallback */
+  background: rgba($color, $opacity);
+}
+
+/**
+    Creates a linear gradient background
+*/
+@mixin gradient($start_color, $end_color, $direction: "horizontal"){
+  @if ($direction == "vertical") {
+    background: $start_color;
+    background: -moz-linear-gradient(top, $start_color 0%, $end_color 100%);
+    background: -webkit-linear-gradient(top, $start_color 0%,$end_color 100%);
+    background: linear-gradient(to bottom, $start_color 0%,$end_color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start_color', endColorstr='$end_color',GradientType=0 );
+  } @else {
+    background: $start_color;
+    background: -moz-linear-gradient(left, $start_color 0%, $end_color 100%);
+    background: -webkit-linear-gradient(left, $start_color 0%,$end_color 100%);
+    background: linear-gradient(to right, $start_color 0%,$end_color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start_color', endColorstr='$end_color',GradientType=1 );
+  }
+}
+
+
+/* Removes all the auto-set properties of HTML-lists */
+@mixin nakedList() {
+  padding:0px; margin:0px;
+
+  li{ list-style-type:none; }
+}
+
+
+/* Responsive type */
+//@mixin responsiveType($max, $min, $range_max: 1280px, $range_min: $mobile-breakpoint) {
+//  font-size:responsive $min $max;
+//  font-range: $range_min $range_max;
+//}
+
+@mixin fullpage-background($imgPath: "empty", $attachment: scroll){
+  @if ($imgPath == "empty") {
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-attachment:$attachment;
+  } @else {
+    background: url(#{$imgPath}) no-repeat center center #{$attachment};
+  }
+  @include prefixes(background-size, cover);
+}
+
+@mixin absoluteFill($offset: 0px, $zIndex: "null") {
+  position:absolute;
+  top:$offset; bottom:$offset; left:$offset; right:$offset;
+
+  @if($zIndex != "null") {
+    z-index:$zIndex;
+  }
+}
+
+@mixin responsiveType ($max, $min) {
+
+  $min_width: 400;
+  $max_width: 1200;
+
+  font-size: calc( #{$min} +  #{$max} - #{$min} * ( 100vw - #{$min_width} / ( #{$max_width} - #{$min_width}) ));
+
+
+}

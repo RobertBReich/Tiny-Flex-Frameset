@@ -1,0 +1,218 @@
+/*
+    General naming convention:
+
+    "breakpoint"-", if it just works with the container"-"variable: value or stuff it dones."
+
+    So mobile-alignitems-center works on the container and centers items _inside_ the
+    container.
+
+    mobile-alignself-center: works on a single _item_ and centers it.
+*/
+
+
+/*
+    Container: justify-content;
+    This defines the alignment along the MAIN axis. So this differes from
+    row-display and column display.
+*/
+@mixin container-switches($name) {
+
+    .#{$name}-flexrow {
+    flex-direction: row;
+    }
+    .#{$name}-flexcolumn {
+    flex-direction: column;
+    }
+    .#{$name}-flexrowreverse {
+    flex-direction: row-reverse;
+    }
+    .#{$name}-flexcolumnreverse {
+    flex-direction: column-reverse;
+    }
+    .#{$name}-jc-flexstart {
+    justify-content: flex-start;
+    }
+    .#{$name}-jc-flexend {
+    justify-content: flex-end;
+    }
+    .#{$name}-jc-center {
+    justify-content: center;
+    }
+    .#{$name}-jc-spacebetween {
+    justify-content: space-between;
+    }
+    .#{$name}-jc-spacearound {
+    justify-content: space-around;
+    }
+    .#{$name}-flexwrap {
+    flex-wrap: wrap;
+    } 
+    .#{$name}-flexnowrap {
+    flex-wrap: nowrap;
+    }
+}
+
+@mixin container-align-items($name) {
+
+    .#{$name}-alignitems-center {
+        align-items: center;
+    }
+    .#{$name}-alignitems-start {
+        align-items: flex-start;
+    }    
+    .#{$name}-alignitems-end {
+        align-items: flex-end;
+    }
+    .#{$name}-alignitems-baseline {
+        align-items: baseline;
+    }
+}
+
+@mixin item-align-self ($name) {
+
+    .#{$name}-alignself-auto {
+        align-self: center;
+    }
+    .#{$name}-alignself-baseline {
+        align-self: baseline;
+    }
+    .#{$name}-alignself-start {
+        align-self: flex-start;
+    }
+    .#{$name}-alignself-end {
+        align-self: flex-end;
+    }
+    .#{$name}-alignself-center {
+        align-self: center;
+    }
+}
+
+
+
+
+@mixin item-order ($name) {
+
+    @for $j from -10 through -1 {
+
+        .#{$name}-order-minus#{$j} {
+    
+            order: ($j);
+        }
+    }
+    @for $j from 0 through 10 {
+
+        .#{$name}-order-#{$j} {
+    
+            order: ($j);
+        }
+    }
+}
+
+/* experimental */
+@mixin item-flex-basis ($name) {
+
+    .#{$name}-flex-basis-auto {
+
+        flex-basis: auto;
+    }
+    .#{$name}-flex-basis-0 {
+
+        flex-basis: 0;
+    }
+}
+
+@mixin item-flex-grow ($name) {
+
+    @for $j from 0 through 5 {
+
+        .#{$name}-flex-grow-#{$j} {
+
+            flex-grow: ($j);
+        }
+    }
+}
+
+@mixin item-flex-shrink ($name) {
+
+    @for $j from 0 through 5 {
+
+        .#{$name}-flex-shrink-#{$j} {
+
+            flex-shrink: ($j);
+        }
+    }
+}
+
+/*  Paddings 
+    grouped into top/bottom and left/right. Reason that padding-top & -bottom is used 
+    is simple. Like this, you can combine both. 
+
+    Example:
+    
+        <div class="mobile-padding-8-0 mobile-padding-0-8 desktop-16-0 desktop-0-40">
+
+    Mobile: Works equal to padding: 8px all around. For Desktop it switches to 16px top/bottom
+    and 40px left/right.
+*/
+
+@mixin topbottom-padding ($name) {
+
+    @for $j from 0 through 10 {
+
+        .#{$name}-padding-#{$j*8}-#{0} {
+      
+          padding-top: ($j*8px);
+          padding-bottom: ($j*0px);
+          
+        }
+    }
+}
+@mixin leftright-padding ($name) {
+
+    @for $j from 0 through 10 {
+
+        .#{$name}-padding-#{0}-#{$j*8} {
+      
+          padding-left: ($j*0px);
+          padding-right: ($j*8px);
+          
+        }
+    }
+}
+
+@mixin top-margin ($name) {
+
+    @for $j from 0 through 10 {
+
+        .#{$name}-margin-top-#{$j*8} {
+      
+            margin-top: ($j*8px);
+        }
+    }
+}
+
+@mixin bottom-margin ($name) {
+
+    @for $j from 0 through 10 {
+
+        .#{$name}-margin-bottom-#{$j*8} {
+      
+            margin-bottom: ($j*8px);
+        }
+    }
+}
+
+
+
+/*  Height (vh) 
+*/
+@mixin height-vh ($name) {
+
+    @for $j from 1 through 10 {
+
+        .#{$name}-height-#{$j*10}vh {
+    
+          min-height: ($j*10vh);
+        }
+    }  
+}

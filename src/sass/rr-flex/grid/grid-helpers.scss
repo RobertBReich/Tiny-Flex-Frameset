@@ -1,0 +1,87 @@
+@import "_variables.scss";
+@import "_mixins.scss";
+@import "_breakpoints.scss";
+@import "_grid-mixins.scss";
+
+
+/* "Mobile First" order
+*/
+@each $name , $start , $end in $breakpoints {
+
+  @if ($start == 0) {
+
+    @include container-switches ($name);
+    @include container-align-items($name);
+    @include item-align-self ($name);
+    @include item-order ($name);
+    @include height-vh ($name);
+
+    // Padding ist buggy
+    //@include topbottom-padding ($name);
+    //@include leftright-padding ($name);
+
+    @include top-margin ($name);
+    @include bottom-margin ($name);
+    @include item-flex-basis ($name);
+    @include item-flex-grow ($name);
+    @include item-flex-shrink ($name);
+
+  } @else {
+
+    @media (min-width: #{$start}px) {
+
+      @include container-switches ($name);
+      @include container-align-items($name);
+      @include item-align-self ($name);
+      @include item-order ($name);
+      @include height-vh ($name);
+
+      // Padding ist buggy
+      //@include topbottom-padding ($name);
+      //@include leftright-padding ($name);
+
+      @include top-margin ($name);
+      @include bottom-margin ($name);
+      @include item-flex-basis ($name);
+      @include item-flex-grow ($name);
+      @include item-flex-shrink ($name);
+
+    }
+  }
+}
+
+/* Exclusive breakpoint range
+*/
+@each $name , $start , $end in $breakpoints {
+
+  @if ($start == 0) {
+
+    @media (max-width: #{$end}px) {
+
+      .#{$name}-hidden {
+        display: none !important;
+      }
+    }
+
+  } @else {
+
+    @if ($end != 0) {
+
+      @media (min-width: #{$start}px) and (max-width: #{$end}px) {
+
+        .#{$name}-hidden {
+          display: none !important;
+        }  
+      }
+
+    } @else {
+
+      @media (min-width: #{$start}px) {
+
+        .#{$name}-hidden {
+          display: none !important;
+        }
+      }
+    }
+  }
+}

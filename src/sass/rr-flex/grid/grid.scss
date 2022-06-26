@@ -1,0 +1,80 @@
+@import "_mixins.scss";
+@import "_breakpoints.scss";
+@import "_grid-mixins.scss";
+
+/*  Defines the Grid
+    See _breakpoints.scss for ajusting breakpoints and details about how they work.  
+*/
+
+.flex {
+  @include prefixes(display,flex);
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+
+// Grid-widths
+
+@each $name , $start , $end in $breakpoints {
+
+  @if ($start == 0) {
+
+    @for $i from 1 through 20 {
+    
+      .#{$name}-#{$i*5} {
+        width: ($i) * 5%;
+        flex: none;
+      }
+    }
+    // special
+    .#{$name}-#{"1-3"} , .#{$name}-#{"33"}  {
+      width: 33.3334%;
+      flex: none;
+    }
+    .#{$name}-#{"1-6"} , .#{$name}-#{"16"} {
+      width: 16.6667%;
+      flex: none;
+    }
+    .#{$name}-#{"1-8"} , .#{$name}-#{"12"} {
+      width: 12.5%;
+      flex: none;
+    }
+    .#{$name}-auto {
+      display: block;        
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+  } @else {
+
+    @media (min-width: #{$start}px) {
+
+      @for $i from 1 through 20 {
+    
+        .#{$name}-#{$i*5} {
+          width: ($i)* 5%;
+          flex: none;
+        }
+      }
+      // special
+      .#{$name}-#{"1-3"} , .#{$name}-#{"33"}  {
+        width: 33.3334%;
+        flex: none;
+      }
+      .#{$name}-#{"1-6"} , .#{$name}-#{"16"} {
+        width: 16.6667%;
+        flex: none;
+      }
+      .#{$name}-#{"1-8"} , .#{$name}-#{"12"} {
+        width: 12.5%;
+        flex: none;
+      }
+      .#{$name}-auto {
+        display: block;        
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+.bg-color-blue {
+  background-color: blue;
+}
+
+.bg-color-red {
+  background-color: red;
+}
+
+.bg-color-white {
+  background-color: white;
+}
+
+.bg-color-green {
+  background-color: #20bc56;
+}
+
+.bg-color-grey {
+  background-color: #1f191a;
+}
+
+.bg-color-black {
+  background-color: #000000;
+}
+
+.text-color-white {
+  color: #ffffff;
+}
+.text-color-black {
+  color: #000000;
+}
+
+.text-align-center {
+  text-align: center;
+}
+.text-align-left {
+  text-align: left;
+}
+.text-align-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-pointer-cursor {
+  cursor: pointer;
+}
+
+.flex-center-center {
+  display: -webkit-box;
+  display: flex;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  -o-display: flex;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+/* Center */
+.is-centered-vertical {
+
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+
+}
+
+
+
+.frame {
+  border: dotted 1px #ff6600;
+}
+
+.is-relative {
+  position: relative;
+}
+
+span.hl-grey {
+  background-color: whitesmoke;
+  padding: .3em .4em;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px 1px rgba(0,0,0,0.2);
+}
+
+.centered-image img {
+  -moz-object-fit: cover;
+  -webkit-object-fit: cover;
+  -ms-object-fit: cover;
+  object-fit: cover;
+
+  -moz-object-position: center;
+  -webkit-object-position: center;
+  -ms-object-position: center;
+  object-position: center;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+

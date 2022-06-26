@@ -1,0 +1,39 @@
+/*
+    BREAKPOINT - DEFINITION
+
+    $breakpoints: list of lists 
+                  one list-item with 3 parameters:
+
+                  $name:    Name of the breakpoint
+                  $start:   Start-Range. If Null, will trigger exclusion 
+                            for first (mobile?) breakpoint.
+                  $end:     value for the min-width part. If null, will
+                            mark the breakpoint from $start with min-width.
+
+    Examples:
+
+    - Grid:
+        The grid will be generated with the first $name (for ex. mobile) without a media
+        query. So it also works as a "default" value. If there is no other breakpoint defined
+        for a container like:
+            <div class="mobile-100">, the container will always be 100% width.
+        If you use:  <div class="mobile-100 desktop-50"> the container will have a width of
+        100% inside mobile and tablet, but switches to 50% at desktop. 
+
+    - Grid-Helpers:
+        These are generated in a range for min-width to max-width.
+        Best example here is mobile-hidden, tablet-hidden & desktop-hidden. These work just
+        in their defined breakpoint range. So if you use mobile-hidden only, the container
+        should only be set to display: none in the mobile breakpoint range.                     
+    
+*/
+$mobile-breakpoint: 600px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 992px;
+$hd-breakpoint: 2600px;
+
+$breakpoints: ("mobile" , 0 , 600) , ("tablet" , 600 , 768) , ("desktop" , 768 , 0);
+
+/* Variation with 4 Breakpoints, added "HD" as a widescreen option but probably makes no sense.
+// $breakpoints: ("mobile" , 0 , 600) , ("tablet" , 600 , 768) , ("desktop" , 768 , 992) , ("hd" , 992 , 0);
+*/

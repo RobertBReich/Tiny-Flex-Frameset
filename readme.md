@@ -1,4 +1,4 @@
-# Tiny Flex Frameset | Version 0.1.0 Beta
+# Tiny Flex Frameset | Version 1.0.0 Beta
 
 A CSS Flexbox Grid Frameset with focus on simple to use flexbox parameters and a mobile first, percentage based responsive frameset. The precompiled version uses 5% steps but can be altered for personal use inside `grid.scss`. The system also has some special versions for `1/3rd (33.3334%)`, `1/6th (16.6667%)`, `1/8th (12.5%)` and some other funky stuff.
 
